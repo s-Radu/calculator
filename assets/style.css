@@ -5,6 +5,28 @@
 .bi:hover {
   animation: rotate-scale-up 0.65s linear both;
 }
+.calculator {
+  width: 300px;
+  min-height: 500px;
+  border-radius: 1rem;
+  border: 1px solid red;
+}
+.section {
+  margin-top: 10%;
+}
+.result-wrapper {
+  margin: 5px auto;
+  direction: rtl;
+  width: 92%;
+  min-height: 5rem;
+  border-radius: 1rem;
+  background-color: aliceblue;
+  color: black;
+}
+.result-calc {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid black;
+}
 
 /** Animations */
 

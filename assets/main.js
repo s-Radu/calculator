@@ -9,13 +9,10 @@ function toggleDarkMode() {
     } else {
       button.dataset.bsTheme = "dark";
     }
-    console.log(button.dataset.bsTheme);
   });
 }
 
-//> Event listeners
-
-darkModeBtn.addEventListener("click", () => {
+function buttonClasses() {
   if (darkModeBtn.classList.contains("bi-moon-stars")) {
     darkModeBtn.classList.remove("bi-moon-stars");
     darkModeBtn.classList.add("bi-brightness-high");
@@ -23,5 +20,11 @@ darkModeBtn.addEventListener("click", () => {
     darkModeBtn.classList.remove("bi-brightness-high");
     darkModeBtn.classList.add("bi-moon-stars");
   }
+}
+
+//> Event listeners
+
+darkModeBtn.addEventListener("click", () => {
+  buttonClasses();
   toggleDarkMode();
 });
