@@ -4,6 +4,7 @@ const darkMode = document.querySelectorAll("[data-bs-theme]");
 const darkModeBtn = document.getElementById("toggler");
 const buttons = document.querySelectorAll("button");
 const resultWrapper = document.querySelector(".result-wrapper");
+const result = document.getElementById("result");
 
 //> Functions
 
@@ -44,7 +45,15 @@ buttons.forEach((button) => {
     if (e.target.matches("button")) {
       const key = e.target;
       const action = key.dataset.action;
+      const keyContent = key.textContent;
+      const displayedNum = result.textContent;
+
       if (!action) {
+        if (displayedNum === "0") {
+          result.textContent = keyContent;
+        } else {
+          result.textContent = displayedNum + keyContent;
+        }
         console.log("number key");
       } else if (
         action === "add" ||
