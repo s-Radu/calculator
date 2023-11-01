@@ -2,9 +2,8 @@
 
 const darkMode = document.querySelectorAll("[data-bs-theme]");
 const darkModeBtn = document.getElementById("toggler");
-const buttons = document.querySelectorAll("button");
 const resultWrapper = document.querySelector(".result-wrapper");
-const result = document.getElementById("result");
+const buttons = document.querySelectorAll("button");
 
 //> Functions
 
@@ -39,41 +38,6 @@ function darkModeBtnChange() {
     darkModeBtn.classList.add("bi-moon-stars");
   }
 }
-
-buttons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    if (e.target.matches("button")) {
-      const key = e.target;
-      const action = key.dataset.action;
-      const keyContent = key.textContent;
-      const displayedNum = result.textContent;
-
-      if (!action) {
-        if (displayedNum === "0") {
-          result.textContent = keyContent;
-        } else {
-          result.textContent = displayedNum + keyContent;
-        }
-        console.log("number key");
-      } else if (
-        action === "add" ||
-        action === "divide" ||
-        action === "multy" ||
-        action === "sub"
-      ) {
-        console.log("operator key");
-      } else if (action === "clear") {
-        console.log("clear key");
-      } else if (action === "del") {
-        console.log("del key");
-      } else if (action === "decimal") {
-        console.log("decimal key");
-      } else if (action === "equal") {
-        console.log("equal key");
-      }
-    }
-  });
-});
 
 //> Event listeners
 
