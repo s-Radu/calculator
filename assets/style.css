@@ -11,29 +11,27 @@
   border-radius: 1rem;
   /* padding: 0.5rem; */
 }
+
 .section {
   margin-top: 10%;
 }
 .result-wrapper {
   margin: 0 auto;
-  direction: rtl;
   min-height: 5rem;
   border-radius: 1rem;
 }
 .result {
   font-size: 2rem;
 }
-.result-calc {
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid black;
-}
-.operands * {
+
+.btn {
   border-radius: 1rem;
   cursor: pointer;
   min-height: 80px;
+  scale: 0.95;
 }
 .operands *:hover {
-  scale: 0.99;
+  scale: 0.93;
   box-shadow: 0 0 5px white;
 }
 /** Animations */
