@@ -22,6 +22,8 @@
 }
 .result {
   font-size: 2rem;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .btn {
