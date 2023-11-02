@@ -13,12 +13,16 @@ class Calculator {
 
   delete() {}
 
-  appendNumber(number) {}
+  appendNumber(number) {
+    this.currentOperand = number;
+  }
 
   chooseOperation(operation) {}
   compute() {}
 
-  updateDisplay() {}
+  updateDisplay() {
+    this.currentOperand.innerText = this.currentOperand;
+  }
 }
 
 const numberButtons = document.querySelectorAll("[data-number]");
@@ -28,3 +32,12 @@ const clearButton = document.querySelector("[data-clear]");
 const delButton = document.querySelector("[data-del]");
 const previousOperand = document.querySelector("[data-previous-operant]");
 const currentOperand = document.querySelector("[data-current-operant]");
+
+const calculator = new Calculator(previousOperand, currentOperand);
+
+numberButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
+  });
+});

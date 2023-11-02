@@ -9,7 +9,6 @@
   width: 350px;
   min-height: 500px;
   border-radius: 1rem;
-  /* padding: 0.5rem; */
 }
 
 .section {
@@ -17,7 +16,7 @@
 }
 .result-wrapper {
   margin: 0 auto;
-  min-height: 5rem;
+  min-height: 7rem;
   border-radius: 1rem;
 }
 .result {
