@@ -120,19 +120,23 @@ operationButtons.forEach((button) => {
     calculator.chooseOperation(button.innerHTML);
     calculator.updateDisplay();
   });
+  button.preventDefault();
 });
 
 equalsButton.addEventListener("click", (button) => {
   calculator.compute();
   calculator.updateDisplay();
+  button.preventDefault();
 });
 
 clearButton.addEventListener("click", (button) => {
   calculator.clear();
   calculator.updateDisplay();
+  button.preventDefault();
 });
 
-delButton.addEventListener("click", (buttons) => {
+delButton.addEventListener("click", (button) => {
   calculator.delete();
   calculator.updateDisplay();
+  button.preventDefault();
 });

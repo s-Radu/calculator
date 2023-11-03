@@ -3,7 +3,7 @@
 const darkMode = document.querySelectorAll("[data-bs-theme]");
 const darkModeBtn = document.getElementById("toggler");
 const resultWrapper = document.querySelector(".result-wrapper");
-const buttons = document.querySelectorAll("button");
+const button = document.querySelectorAll("button");
 
 //> Functions
 
@@ -12,7 +12,7 @@ function toggleDarkMode() {
     if (button.dataset.bsTheme === "dark") {
       resultWrapper.classList.remove("text-dark", "bg-light");
       resultWrapper.classList.add("text-light", "bg-dark");
-      buttons.forEach((button) => {
+      button.forEach((button) => {
         button.classList.remove("text-dark", "bg-light");
         button.classList.add("text-light", "bg-dark");
       });
@@ -21,7 +21,7 @@ function toggleDarkMode() {
       button.dataset.bsTheme = "dark";
       resultWrapper.classList.remove("text-light", "bg-dark");
       resultWrapper.classList.add("text-dark", "bg-light");
-      buttons.forEach((button) => {
+      button.forEach((button) => {
         button.classList.remove("text-light", "bg-dark");
         button.classList.add("text-dark", "bg-light");
       });
