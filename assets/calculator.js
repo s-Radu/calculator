@@ -140,3 +140,8 @@ delButton.addEventListener("click", (button) => {
 window.addEventListener("dblclick", (e) => {
   e.preventDefault();
 });
+numberButtons.forEach((button) => {
+  button.addEventListener("dbclick", (e) => {
+    e.preventDefault();
+  });
+});
