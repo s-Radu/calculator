@@ -136,12 +136,3 @@ delButton.addEventListener("click", (button) => {
   calculator.delete();
   calculator.updateDisplay();
 });
-
-window.addEventListener("dblclick", (e) => {
-  e.preventDefault();
-});
-numberButtons.forEach((button) => {
-  button.addEventListener("dbclick", (e) => {
-    e.preventDefault();
-  });
-});
