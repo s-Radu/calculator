@@ -66,11 +66,10 @@ class Calculator {
     if (isNaN(integerDigits)) {
       integerDisplay = "";
     } else {
-      integerDigits = integerDigits.toLocaleString("en", {
+      integerDisplay = integerDigits.toLocaleString("en", {
         maximumFractionDigits: 0,
       });
     }
-
     if (decimalDigits != null) {
       return `${integerDisplay}.${decimalDigits}`;
     } else {
@@ -86,6 +85,8 @@ class Calculator {
       this.previousOperandTextElement.innerHTML = `${this.getDisplayNumber(
         this.previousOperand
       )} ${this.operation}`;
+    } else {
+      this.previousOperandTextElement.innerHTML = "";
     }
   }
 }
