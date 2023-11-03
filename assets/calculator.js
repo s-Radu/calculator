@@ -136,3 +136,7 @@ delButton.addEventListener("click", (button) => {
   calculator.delete();
   calculator.updateDisplay();
 });
+
+window.addEventListener("dblclick", (e) => {
+  e.preventDefault();
+});
