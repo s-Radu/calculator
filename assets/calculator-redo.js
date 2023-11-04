@@ -9,3 +9,10 @@ const delButton = document.querySelector("[data-del]");
 const equalButton = document.querySelector("[data-equal]");
 const mathButtons = document.querySelectorAll("[data-action]");
 const numberButtons = document.querySelectorAll("[data-number]");
+
+class Calculator {
+  constructor(previousOperandTextElement, currentOperandTextElement) {
+    this.currentOperandTextElement = currentOperandTextElement;
+    this.previousOperandTextElement = previousOperandTextElement;
+  }
+}
