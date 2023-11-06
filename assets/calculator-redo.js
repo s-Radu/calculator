@@ -28,7 +28,32 @@ class Calculator {
     this.currentOperand = "";
   }
 
-  compute() {}
+  compute() {
+    let computation;
+    let prev = parseFloat(this.previousOperand);
+    let curr = parseFloat(this.currentOperand);
+    if (isNaN(prev) || isNaN(curr)) return;
+
+    switch (this.operation) {
+      case "+":
+        computation = prev + curr;
+        break;
+      case "-":
+        computation = prev - curr;
+        break;
+      case "*":
+        computation = prev * curr;
+        break;
+      case "÷":
+        computation = prev / curr;
+        break;
+      default:
+        break;
+    }
+    this.currentOperand = computation;
+    this.operation = undefined;
+    this.previousOperand = "";
+  }
 
   updateDisplay() {
     this.currentOperandElement.innerText = this.currentOperand;
