@@ -69,3 +69,8 @@ equationButtons.forEach((button) => {
     calculator.updateDisplay();
   });
 });
+
+equalButton.addEventListener("click", (button) => {
+  calculator.compute();
+  calculator.updateDisplay();
+});
