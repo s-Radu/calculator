@@ -17,12 +17,22 @@ class Calculator {
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
-  chooseOperation(operation) {}
+  chooseOperation(operation) {
+    if (this.currentOperand === "") return;
+    if (this.previousOperand !== "") {
+      this.compute();
+    }
+
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = "";
+  }
 
   compute() {}
 
   updateDisplay() {
     this.currentOperandElement.innerText = this.currentOperand;
+    this.previousOperandElement.innerText = this.previousOperand;
   }
 }
 
