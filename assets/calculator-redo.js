@@ -52,3 +52,10 @@ numberButtons.forEach((button) => {
     calculator.updateDisplay();
   });
 });
+
+equationButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.chooseOperation(button.innerText);
+    calculator.updateDisplay();
+  });
+});
