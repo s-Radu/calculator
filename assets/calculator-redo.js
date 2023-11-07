@@ -7,10 +7,21 @@ class Calculator {
   constructor(previousOperandElement, currentOperandElement) {
     this.currentOperandElement = currentOperandElement;
     this.previousOperandElement = previousOperandElement;
+    this.clear();
+
+    // < When the new calculator is initialised on the user's interface, the clear function will be called straight away so we will have a clean calculator to start with
+  }
+  // * Clear
+  clear() {
+    //< currentOperand and previousOperand are gonna be the objects that we are gonna use to store the infirmation before it gets displayed on user's screen
+    //< there are created *on the fly* and used as we need them.
+    //< these are actually Calculator's variables, same as this.previousOperandElement and this.currentOperandElement
+
+    this.currentOperand = "";
+    this.previousOperand = "";
+    this.operation = undefined;
   }
 }
-
-// * Clear
 
 //* Delete
 
@@ -31,5 +42,15 @@ const numberButtons = document.querySelectorAll("[data-number]");
 const equalButton = document.querySelector("[data-equal]");
 
 //* Initialise the calculator class
+//> when we call the calculator under a new constant we use the new keyword and we pass the same two elemtns that are gonna be displayed on the user's screen
+const calculator = new Calculator(
+  previousOperandElement,
+  currentOperandElement
+);
 
 //* Hook all the functions to the buttons above with event listeners for the user interaction
+
+clearButton.addEventListener("click", (button) => {
+  calculator.clear();
+  calculator.updateDisplay();
+});
