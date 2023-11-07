@@ -57,9 +57,37 @@ class Calculator {
     this.previousOperand = "";
   }
 
+  getDisplayNumber(number) {
+    const stringNumber = number.toString();
+    const intigerDigits = parseFloat(stringNumber.split(".")[0]);
+    const decimalDigits = stringNumber.split(".")[1];
+    let intigerDisplay;
+
+    if (isNaN(intigerDigits)) {
+      intigerDisplay = "";
+    } else {
+      intigerDisplay = intigerDigits.toLocaleString("en", {
+        maximumFractionDigits: 0,
+      });
+    }
+    if (decimalDigits != null) {
+      return `${intigerDisplay}.${decimalDigits}`;
+    } else {
+      return intigerDisplay;
+    }
+  }
+
   updateDisplay() {
-    this.currentOperandElement.innerText = this.currentOperand;
-    this.previousOperandElement.innerText = this.previousOperand;
+    this.currentOperandElement.innerText = this.getDisplayNumber(
+      this.currentOperand
+    );
+    if (this.operation != null) {
+      this.previousOperandElement.innerText = `${this.getDisplayNumber(
+        this.previousOperand
+      )} ${this.operation}`;
+    } else {
+      this.previousOperandElement.innerText = "";
+    }
   }
 }
 
