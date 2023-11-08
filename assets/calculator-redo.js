@@ -21,15 +21,40 @@ class Calculator {
     this.previousOperand = "";
     this.operation = undefined;
   }
+
+  //* Delete
+
+  delete() {}
+
+  //* chooseOperaion
+  //< Forgot about this function :(
+
+  chooseOperation(operation) {}
+
+  //* AppendNumbers
+
+  appendNumbers(number) {
+    //> Everything that happens inside of this funtion will result in appending the numbers clicked by the user to the calculator's screen
+
+    //> Checking if the period exists in the number and if so, we can't add another one
+
+    if (number === "." && this.currentOperand.includes(".")) return;
+
+    //> calling toString() on this currentOperand and on the number, allows us to transform the numbers that are typed by the user into a string of numbers, and later be converted again into numbers alone so the math can be processed.
+
+    this.currentOperand = this.currentOperand.toString() + number.toString();
+  }
+
+  //* calculate
+
+  calculate() {}
+
+  //* update display
+
+  updateDisplay() {
+    this.currentOperandElement.innerText = this.currentOperand;
+  }
 }
-
-//* Delete
-
-//* AppendNumbers
-
-//* calculate
-
-//* update display
 
 const previousOperandElement = document.querySelector(
   "[data-previous-operant]"
@@ -53,4 +78,13 @@ const calculator = new Calculator(
 clearButton.addEventListener("click", (button) => {
   calculator.clear();
   calculator.updateDisplay();
+});
+
+//> With the below, the number that gets pressed is added to appendNumbers
+
+numberButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.appendNumbers(button.innerText);
+    calculator.updateDisplay();
+  });
 });
