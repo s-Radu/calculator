@@ -32,13 +32,22 @@ class Calculator {
   //* chooseOperaion
   //< Forgot about this function :(
 
-  chooseOperation(operation) {}
+  chooseOperation(operation) {
+    //> If the screen for the current number is empty, we do nothing, if the screen for the previous element is not null, then we call calculate() to sort out the math
+    //> Then we set the operation to the variable this.operation, previousOperand takes the text from the currentOperand and we clean currentOperand
+    if (this.currentOperand === "") return;
+    if (this.previousOperand != null) {
+      this.calculate();
+    }
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = "";
+  }
 
   //* AppendNumbers
 
   appendNumbers(number) {
     //> Everything that happens inside of this funtion will result in appending the numbers clicked by the user to the calculator's screen
-
     //> Checking if the period exists in the number and if so, we can't add another one
 
     if (number === "." && this.currentOperand.includes(".")) return;
@@ -55,7 +64,14 @@ class Calculator {
   //* update display
 
   updateDisplay() {
+    //> Transfers data held by this.currentOperand and previous.currentOperand into the element's innerText so it's displayed to the user
+
     this.currentOperandElement.innerText = this.currentOperand;
+    if (this.operation != null) {
+      this.previousOperandElement.innerText = `${this.currentOperand}${this.operation}`;
+    } else {
+      this.previousOperandElement.innerText = "";
+    }
   }
 }
 
@@ -95,4 +111,11 @@ numberButtons.forEach((button) => {
 delButton.addEventListener("click", (button) => {
   calculator.delete();
   calculator.updateDisplay();
+});
+
+equationButtons.forEach((button) => {
+  button.addEventListener("click", (button) => {
+    calculator.chooseOperation(button.innerText);
+    calculator.updateDisplay();
+  });
 });
