@@ -24,7 +24,10 @@ class Calculator {
 
   //* Delete
 
-  delete() {}
+  delete() {
+    //> Slice the last item from the string of numbers
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
+  }
 
   //* chooseOperaion
   //< Forgot about this function :(
@@ -87,4 +90,9 @@ numberButtons.forEach((button) => {
     calculator.appendNumbers(button.innerText);
     calculator.updateDisplay();
   });
+});
+
+delButton.addEventListener("click", (button) => {
+  calculator.delete();
+  calculator.updateDisplay();
 });
