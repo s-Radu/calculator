@@ -35,6 +35,7 @@ class Calculator {
   chooseOperation(operation) {
     //> If the screen for the current number is empty, we do nothing, if the screen for the previous element is not null, then we call calculate() to sort out the math
     //> Then we set the operation to the variable this.operation, previousOperand takes the text from the currentOperand and we clean currentOperand
+
     if (this.currentOperand === "") return;
     if (this.previousOperand != null) {
       this.calculate();
@@ -59,7 +60,36 @@ class Calculator {
 
   //* calculate
 
-  calculate() {}
+  calculate() {
+    //> Within this function we parse the previousOperand and currentOperand as floats so we can use them for the calculator's operations.
+    //> using a switch case makes it way easier to read and modify.
+    let computation;
+    let prev = parseFloat(this.previousOperand);
+    let curr = parseFloat(this.currentOperand);
+
+    //> We have a quick check for any of the numbers not to be anything else, and if they are not, we continue with the switch case
+
+    if (isNaN(curr) || isNaN(prev)) return;
+
+    switch (this.operation) {
+      case "+":
+        computation = prev + curr;
+        break;
+      case "-":
+        computation = prev - curr;
+        break;
+      case "*":
+        computation = prev * curr;
+        break;
+      case "÷":
+        computation = prev / curr;
+        break;
+    }
+    //> currentOperand gets the result of the computation and we clear the operation and previousOperand
+    this.currentOperand = computation;
+    this.previousOperand = "";
+    this.operation = undefined;
+  }
 
   //* update display
 
@@ -68,7 +98,7 @@ class Calculator {
 
     this.currentOperandElement.innerText = this.currentOperand;
     if (this.operation != null) {
-      this.previousOperandElement.innerText = `${this.currentOperand}${this.operation}`;
+      this.previousOperandElement.innerText = `${this.previousOperand} ${this.operation}`;
     } else {
       this.previousOperandElement.innerText = "";
     }
@@ -103,7 +133,7 @@ clearButton.addEventListener("click", (button) => {
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    calculator.appendNumbers(button.innerText);
+    calculator.appendNumbers(button.textContent);
     calculator.updateDisplay();
   });
 });
@@ -114,8 +144,13 @@ delButton.addEventListener("click", (button) => {
 });
 
 equationButtons.forEach((button) => {
-  button.addEventListener("click", (button) => {
-    calculator.chooseOperation(button.innerText);
+  button.addEventListener("click", () => {
+    calculator.chooseOperation(button.textContent);
     calculator.updateDisplay();
   });
+});
+
+equalButton.addEventListener("click", (button) => {
+  calculator.calculate();
+  calculator.updateDisplay();
 });
