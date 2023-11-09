@@ -21,22 +21,46 @@ class Calculator {
   }
 
   chooseOperation(operation) {
-    this.operation = operation;
     if (this.currentOperand === "") return;
-    if (this.previousOperand !== "") {
+    if (this.previousOperand != null) {
       this.calculate();
     }
+    this.operation = operation;
     this.previousOperand = this.currentOperand;
     this.currentOperand = "";
-    this.operation = operation;
   }
 
-  calclate() {}
+  calculate() {
+    let computation;
+    const prev = parseFloat(this.previousOperand);
+    const curr = parseFloat(this.currentOperand);
+
+    if (isNaN(curr) || isNaN(prev)) return;
+    switch (this.operation) {
+      case "÷":
+        computation = prev / curr;
+        break;
+      case "*":
+        computation = prev * curr;
+        break;
+      case "+":
+        computation = prev + curr;
+        break;
+      case "-":
+        computation = prev - curr;
+        break;
+    }
+    this.currentOperand = computation;
+    this.previousOperand = "";
+    this.operation = undefined;
+  }
 
   updateDisplay() {
     this.currentOperandElement.textContent = this.currentOperand;
     if (this.operation != null) {
       this.previousOperandElement.textContent = `${this.previousOperand} ${this.operation}`;
+    } else {
+      this.previousOperandElement.textContent = "";
     }
   }
 }
@@ -78,4 +102,9 @@ equationButtons.forEach((button) => {
     calculator.chooseOperation(button.textContent);
     calculator.updateDisplay();
   });
+});
+
+equalButton.addEventListener("click", () => {
+  calculator.calculate();
+  calculator.updateDisplay();
 });
