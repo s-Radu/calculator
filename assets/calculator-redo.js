@@ -20,12 +20,24 @@ class Calculator {
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
-  chooseOperation(operation) {}
+  chooseOperation(operation) {
+    this.operation = operation;
+    if (this.currentOperand === "") return;
+    if (this.previousOperand !== "") {
+      this.calculate();
+    }
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = "";
+    this.operation = operation;
+  }
 
   calclate() {}
 
   updateDisplay() {
     this.currentOperandElement.textContent = this.currentOperand;
+    if (this.operation != null) {
+      this.previousOperandElement.textContent = `${this.previousOperand} ${this.operation}`;
+    }
   }
 }
 
@@ -59,4 +71,11 @@ numberButtons.forEach((button) => {
 delButton.addEventListener("click", () => {
   calculator.delete();
   calculator.updateDisplay();
+});
+
+equationButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.chooseOperation(button.textContent);
+    calculator.updateDisplay();
+  });
 });
