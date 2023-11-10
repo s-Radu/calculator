@@ -11,7 +11,9 @@ class Calculator {
     this.operation = undefined;
   }
 
-  delete() {}
+  delete() {
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
+  }
 
   appendNumbers(number) {
     if (number === "." && this.currentOperand.includes(".")) return;
@@ -50,4 +52,9 @@ numberButtons.forEach((button) => {
     calculator.appendNumbers(button.textContent);
     calculator.updateDisplay();
   });
+});
+
+delButton.addEventListener("click", () => {
+  calculator.delete();
+  calculator.updateDisplay();
 });
