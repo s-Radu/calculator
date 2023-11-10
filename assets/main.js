@@ -10,22 +10,32 @@ const buttons = document.querySelectorAll("button");
 function toggleDarkMode() {
   darkMode.forEach((button) => {
     if (button.dataset.bsTheme === "dark") {
-      resultWrapper.classList.remove("text-dark", "bg-light");
-      resultWrapper.classList.add("text-light", "bg-dark");
-      buttons.forEach((button) => {
-        button.classList.remove("text-dark", "bg-light");
-        button.classList.add("text-light", "bg-dark");
-      });
+      darkModeOff();
       button.dataset.bsTheme = "light";
     } else {
+      darkModeOn();
       button.dataset.bsTheme = "dark";
-      resultWrapper.classList.remove("text-light", "bg-dark");
-      resultWrapper.classList.add("text-dark", "bg-light");
-      buttons.forEach((button) => {
-        button.classList.remove("text-light", "bg-dark");
-        button.classList.add("text-dark", "bg-light");
-      });
     }
+  });
+}
+
+function darkModeOn() {
+  resultWrapper.classList.remove("text-light", "bg-dark");
+  resultWrapper.classList.add("text-dark", "bg-light");
+
+  buttons.forEach((button) => {
+    button.classList.remove("text-light", "bg-dark");
+    button.classList.add("text-dark", "bg-light");
+  });
+}
+
+function darkModeOff() {
+  resultWrapper.classList.remove("text-dark", "bg-light");
+  resultWrapper.classList.add("text-light", "bg-dark");
+
+  buttons.forEach((button) => {
+    button.classList.remove("text-dark", "bg-light");
+    button.classList.add("text-light", "bg-dark");
   });
 }
 
