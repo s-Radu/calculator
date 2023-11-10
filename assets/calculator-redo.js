@@ -110,3 +110,5 @@ equalButton.addEventListener("click", () => {
   calculator.compute();
   calculator.updateDisplay();
 });
+
+//* in obisidian we have pseudocode for the whole calculator.
