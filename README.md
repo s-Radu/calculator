@@ -9,3 +9,6 @@ Started by writing pseudocode for the calculator and then followed my own pseudo
   - Which will be the code that was refracted with help of GPT and the more fancy code, that also adds comma to thousends in the calculator
   ## calculator-redo.js
   - In this file I did again, and again, and again, and again the project, till I managed to do it by myself :) 
+
+
+### Built with plain JS and Boostrap ( with a few adds to a CSS file ) 
