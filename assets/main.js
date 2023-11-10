@@ -4,22 +4,23 @@ const darkMode = document.querySelectorAll("[data-bs-theme]");
 const darkModeBtn = document.getElementById("toggler");
 const resultWrapper = document.querySelector(".result-wrapper");
 const buttons = document.querySelectorAll("button");
+const darkModeElements = document.querySelectorAll(".dark-mode-element");
 
 //> Functions
 
 function toggleDarkMode() {
   darkMode.forEach((button) => {
     if (button.dataset.bsTheme === "dark") {
-      darkModeOff();
+      darkModeOn();
       button.dataset.bsTheme = "light";
     } else {
-      darkModeOn();
+      darkModeOff();
       button.dataset.bsTheme = "dark";
     }
   });
 }
 
-function darkModeOn() {
+function darkModeOff() {
   resultWrapper.classList.remove("text-light", "bg-dark");
   resultWrapper.classList.add("text-dark", "bg-light");
 
@@ -27,15 +28,25 @@ function darkModeOn() {
     button.classList.remove("text-light", "bg-dark");
     button.classList.add("text-dark", "bg-light");
   });
+
+  darkModeElements.forEach((element) => {
+    element.classList.remove("bg-light", "text-dark");
+    element.classList.add("text-light");
+  });
 }
 
-function darkModeOff() {
+function darkModeOn() {
   resultWrapper.classList.remove("text-dark", "bg-light");
   resultWrapper.classList.add("text-light", "bg-dark");
 
   buttons.forEach((button) => {
     button.classList.remove("text-dark", "bg-light");
     button.classList.add("text-light", "bg-dark");
+  });
+
+  darkModeElements.forEach((element) => {
+    element.classList.remove("text-light");
+    element.classList.add("bg-light", "text-dark");
   });
 }
 
