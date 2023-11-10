@@ -20,8 +20,18 @@ class Calculator {
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
-  chooseOperation(operation) {}
+  chooseOperation(operation) {
+    if (this.currentOperand === "") return;
+    if (this.previousOperand != null) {
+      this.compute();
+    }
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = "";
+  }
+
   compute() {}
+
   updateDisplay() {
     this.currentOperandElement.textContent = this.currentOperand;
   }
@@ -57,4 +67,11 @@ numberButtons.forEach((button) => {
 delButton.addEventListener("click", () => {
   calculator.delete();
   calculator.updateDisplay();
+});
+
+equationButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.chooseOperation(button.textContent);
+    calculator.updateDisplay();
+  });
 });
